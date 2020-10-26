@@ -8,8 +8,8 @@ class SessionsController < ApplicationController
     if user && user.authenticate(params[:session][:password])
       # ログイン後にユーザー情報ページにリダイレクトします。
     else
-      # ここにはエラーメッセージ用のflashを入れます。
-    render :new
+      flash.now[:danger] = '認証に失敗しました。'
+      render :new
     end
   end  
 end
